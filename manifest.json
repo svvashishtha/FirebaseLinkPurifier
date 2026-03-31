@@ -1,0 +1,21 @@
+
+{
+  "manifest_version": 3,
+  "name": "Firebase Link Purifier",
+  "version": "2.0",
+  "description": "Clean Firebase Crashlytics links with history and Slack formatting",
+  "permissions": [
+    "activeTab",
+    "clipboardWrite",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://console.firebase.google.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

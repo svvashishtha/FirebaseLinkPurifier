@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Tab Navigation -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="current">Current Link</button>
+      <button class="tab-btn" data-tab="history">History</button>
+    </div>
+
+    <!-- Current Link Tab Content -->
+    <div class="tab-content active" id="current-tab">
+      <div class="section">
+        <label class="label">Clean URL:</label>
+        <div class="url-display" id="cleanUrl">Loading...</div>
+      </div>
+      
+      <div class="section">
+        <label class="label" for="linkName">Name (optional):</label>
+        <input 
+          type="text" 
+          id="linkName" 
+          class="input" 
+          placeholder="e.g., Login Bug - Android"
+          maxlength="100"
+        />
+      </div>
+
+      <div class="button-group">
+        <button id="copySaveBtn" class="btn btn-primary">Copy & Save</button>
+        <button id="copyOnlyBtn" class="btn btn-secondary">Copy Only</button>
+      </div>
+    </div>
+
+    <!-- History Tab Content -->
+    <div class="tab-content" id="history-tab">
+      <div class="history-list" id="historyList">
+        <!-- History items will be dynamically inserted here -->
+      </div>
+      
+      <div class="history-empty" id="historyEmpty">
+        <p>No saved links yet.</p>
+        <p class="hint">Copy your first link from the Current Link tab!</p>
+      </div>
+
+      <button id="clearAllBtn" class="btn btn-danger">Clear All History</button>
+    </div>
+
+    <!-- Status Message -->
+    <div class="status" id="status"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
