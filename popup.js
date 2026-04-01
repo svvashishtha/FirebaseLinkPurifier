@@ -74,11 +74,10 @@ async function loadCurrentUrl() {
   }
 }
 
-// Format URL for Slack
+// Format URL for Slack - now returns only the clean URL
 function formatForSlack(url, name) {
-  if (name && name.trim()) {
-    return `<${url}|${name.trim()}>`;
-  }
+  // Return only the URL without any Slack formatting
+  // This prevents issues with URLs containing special characters like %7C (pipe)
   return url;
 }
 
@@ -283,9 +282,9 @@ copySaveBtn.addEventListener('click', async () => {
   if (!currentCleanUrl) return;
   
   const name = linkNameInput.value;
-  const slackFormatted = formatForSlack(currentCleanUrl, name);
   
-  const copySuccess = await copyToClipboard(slackFormatted);
+  // Copy only the clean URL without Slack formatting
+  const copySuccess = await copyToClipboard(currentCleanUrl);
   const saveSuccess = await saveToHistory(currentCleanUrl, name);
   
   if (copySuccess && saveSuccess) {

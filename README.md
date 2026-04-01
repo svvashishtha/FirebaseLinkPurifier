@@ -1,14 +1,14 @@
 
 # Firebase Crashlytics Link Purifier
 
-A Chrome Extension that cleans Firebase Crashlytics URLs and provides history management with Slack-ready formatting.
+A Chrome Extension that cleans Firebase Crashlytics URLs and provides history management.
 
 ## 🎯 Features
 
 - **URL Cleaning**: Removes session keys, time ranges, and user filters from Firebase URLs
 - **Custom Naming**: Add descriptive names to your saved links
 - **History Management**: Persistent storage of up to 50 links
-- **Slack Formatting**: One-click copy with Slack-ready format `<URL|Name>`
+- **Quick Copy**: One-click copy of clean URLs
 - **Quick Actions**: Open links in new tabs or delete from history
 - **Two-Tab Interface**: Separate views for current link and history
 
@@ -28,11 +28,11 @@ https://console.firebase.google.com/project/my-app/crashlytics/app/android:com.e
 - `/u/0/` (or any user-specific path like `/u/1/`, `/u/2/`)
 - All query parameters (`?sessionId=...`, `&time=...`, etc.)
 
-### Slack Format (With Name):
+### Copied Format:
 ```
-<https://console.firebase.google.com/.../issues/abc123|Login Bug - Android>
+https://console.firebase.google.com/project/my-app/crashlytics/app/android:com.example/issues/abc123
 ```
-*Renders in Slack as:* [Login Bug - Android](URL)
+*Clean URL ready to share anywhere*
 
 ## 📖 Usage Guide
 
@@ -50,14 +50,14 @@ https://console.firebase.google.com/project/my-app/crashlytics/app/android:com.e
    - Max 100 characters
 
 5. **Choose an action:**
-   - **Copy & Save**: Copies Slack-formatted link AND saves to history
-   - **Copy Only**: Just copies to clipboard without saving
+   - **Copy & Save**: Copies the clean URL AND saves to history with optional name
+   - **Copy Only**: Copies the clean URL without saving to history
 
 ### History Management
 
 1. **Switch to History tab** to view saved links
 
-2. **Click on any link name** to copy the Slack-formatted version
+2. **Click on any link name** to copy the clean URL
 
 3. **Use quick actions:**
    - 🔗 **Open**: Opens the link in a new browser tab
@@ -67,13 +67,13 @@ https://console.firebase.google.com/project/my-app/crashlytics/app/android:com.e
 
 ## 💡 Use Cases
 
-### Scenario 1: Quick Share
+### Scenario 1: Quick Save & Share
 ```
 1. On Firebase issue page
 2. Click extension
 3. Enter name: "Payment Crash"
-4. Click "Copy & Save"
-5. Paste in Slack: <url|Payment Crash>
+4. Click "Copy & Save" - copies clean URL and saves with name
+5. Share the clean URL anywhere you need
 ```
 
 ### Scenario 2: Build a Library
@@ -92,17 +92,14 @@ https://console.firebase.google.com/project/my-app/crashlytics/app/android:com.e
 4. Delete once resolved
 ```
 
-## 🎨 Slack Formatting
+## 📋 Copy Behavior
 
-### With Name
-**Input**: Name = "Login Bug", URL = `https://...abc123`
-**Copied**: `<https://...abc123|Login Bug>`
-**Slack Renders**: [Login Bug](https://...abc123)
+The extension always copies the clean URL without any special formatting:
 
-### Without Name
-**Input**: Name = (empty), URL = `https://...abc123`
-**Copied**: `https://...abc123`
-**Slack Renders**: https://...abc123 (auto-linked)
+**Input**: Name = "Login Bug", URL = `https://...issues/abc123`
+**Copied**: `https://...issues/abc123`
+
+The name you provide is saved to history for your reference, making it easy to identify and retrieve links later. The copied URL is clean and works reliably when pasted anywhere - Slack, email, tickets, documentation, etc.
 
 ## 📊 Storage Details
 
